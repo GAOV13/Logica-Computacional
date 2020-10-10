@@ -103,14 +103,18 @@ Section punto3.
 Variables P Q R S : Prop.
 Hypothesis H : P -> (Q \/ R).
 Hypothesis H0 : Q \/ (~P /\ S).
-Hypothesis H1 : S -> (Q /\ R).
+Hypothesis H1 : S -> (Q \/ R).
 Hypothesis H2 : ~P -> ~R.
 Lemma punt3 : Q.
 Proof.
 destruct H0.
 assumption.
 destruct H3.
-apply H1.
+destruct H1.
+assumption.
+assumption.
+destruct H2.
+assumption.
 assumption.
 Qed.
 
